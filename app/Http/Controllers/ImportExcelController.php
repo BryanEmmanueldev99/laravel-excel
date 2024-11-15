@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UsersExport;
 use App\Imports\ImportExcel;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,6 +21,12 @@ class ImportExcelController extends Controller
           //dd($request->all());
           Excel::import(new ImportExcel, $request->file('excel_file'));
           return redirect()->back();
+    }
+
+    public function export() 
+    {
+        return Excel::download(new UsersExport, 'listado_de_usuarios.xlsx');
+        //return Excel::download(new UsersExport, 'invoices.pdf', \Maatwebsite\Excel\Excel::TCPDF);
     }
 
 }

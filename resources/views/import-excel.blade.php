@@ -37,6 +37,8 @@
                 </form>
             </div>
 
+            
+            <a href="{{route('export')}}" class="btn btn-warning">Generar reporte en excel</a>
 
             <div
                 class="table-responsive mt-4"
