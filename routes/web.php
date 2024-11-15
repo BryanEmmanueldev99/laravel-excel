@@ -15,6 +15,8 @@ Route::post('/excel', [ImportExcelController::class,'import_excel_registers'])->
 
 Route::get('users/export/', [ImportExcelController::class, 'export'])->name('export');
 
+Route::get('productos/{id}', [ProductoController::class, 'edit'])->name('edit');
+
 
 Route::get('/productos', [ProductoController::class,'index'])->name('index.productos');
 

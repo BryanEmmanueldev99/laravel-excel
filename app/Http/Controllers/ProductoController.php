@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Imports\ProductosImport;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ProductoController extends Controller
@@ -34,9 +35,11 @@ class ProductoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Producto $producto)
+    public function edit($encryptedValue)
     {
-        //
+        $id = Crypt::decryptString($encryptedValue);
+        $producto = Producto::findOrFail($id);
+        return view('vista_previa_producto', compact('producto'));
     }
 
     /**

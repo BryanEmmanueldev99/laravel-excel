@@ -84,7 +84,7 @@
                             <td>{{$producto->descripción}}</td>
                             <td>{{$producto->precio}}</td>
                             <td>
-                                <a href="">editar</a>
+                                <a href="{{ route('edit', $encryptedValue = Crypt::encryptString($producto->id)) }}">editar</a>
                                 <a href="">borrar</a>
                             </td>
                          </tr>
